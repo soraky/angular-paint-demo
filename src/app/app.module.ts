@@ -9,9 +9,10 @@ import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
+import { DrawingBoardComponent } from './drawing-board/drawing-board.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, CreateComponent],
+  declarations: [AppComponent, HomeComponent, CreateComponent, DrawingBoardComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
