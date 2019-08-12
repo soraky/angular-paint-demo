@@ -10,9 +10,11 @@ import { AppRoutingModule } from "./app-routing.module";
 import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
 import { DrawingBoardComponent } from './drawing-board/drawing-board.component';
+import { DrawingsListComponent } from './drawings-list/drawings-list.component';
+import { DrawingThumbnailComponent } from './drawing-thumbnail/drawing-thumbnail.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, CreateComponent, DrawingBoardComponent],
+  declarations: [AppComponent, HomeComponent, CreateComponent, DrawingBoardComponent, DrawingsListComponent, DrawingThumbnailComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
