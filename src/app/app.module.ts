@@ -12,9 +12,10 @@ import { CreateComponent } from './create/create.component';
 import { DrawingBoardComponent } from './drawing-board/drawing-board.component';
 import { DrawingsListComponent } from './drawings-list/drawings-list.component';
 import { DrawingThumbnailComponent } from './drawing-thumbnail/drawing-thumbnail.component';
+import { ShowComponent } from './show/show.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, CreateComponent, DrawingBoardComponent, DrawingsListComponent, DrawingThumbnailComponent],
+  declarations: [AppComponent, HomeComponent, CreateComponent, DrawingBoardComponent, DrawingsListComponent, DrawingThumbnailComponent, ShowComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

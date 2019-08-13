@@ -4,6 +4,10 @@ export const DRAWINGS: Drawing[] = [
   {
     id: "1",
     name: "First",
+    creator: "Admin",
+    private: false,
+    date: "11.8.2019",
+    time: 10,
     content: [
       {
         width: 20,
@@ -30,6 +34,10 @@ export const DRAWINGS: Drawing[] = [
   {
     id: "2",
     name: "Second",
+    creator: "Admin",
+    private: false,
+    date: "12.8.2019",    
+    time: 20,
     content: [
       {
         width: 10,
@@ -56,6 +64,40 @@ export const DRAWINGS: Drawing[] = [
   {
     id: "3",
     name: "Third",
+    creator: "Admin",
+    private: false,
+    date: "13.8.2019",    
+    time: 30,
+    content: [
+      {
+        width: 3,
+        color: "#000000",
+        coordinates: [
+          { x: 1, y: 1 },
+          { x: 100, y: 100 },
+          { x: 400, y: 400 },
+          { x: 500, y: 4 }
+        ]
+      },
+      {
+        width: 2,
+        color: "##2e3282",
+        coordinates: [
+          { x: 45, y: 99 },
+          { x: 600, y: 123 },
+          { x: 43, y: 321 },
+          { x: 6, y: 99 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "4",
+    name: "Fourth",
+    creator: "Admin",
+    private: true,
+    date: "13.8.2019",    
+    time: 30,
     content: [
       {
         width: 3,

@@ -8,11 +8,9 @@ import { Content } from '../drawing';
 })
 export class DrawingThumbnailComponent implements OnInit {
   @Input() thumbnailCurrentDrawing: Content;
-  thumbReadOnly = true;
 
   constructor() { }
 
   ngOnInit() {
   }
-
 }

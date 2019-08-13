@@ -8,11 +8,11 @@ import { Drawing, Content } from "../drawing";
 })
 export class DrawingBoardComponent implements OnInit {
   @Input() drwaingBoardReadOnly: boolean;
-  @Input() existingDrawing: Drawing;
+  @Input() existingStrokes: Array<Content>;
   @ViewChild("canvas", { static: true })
   canvas: ElementRef<HTMLCanvasElement>;
   private ctx: CanvasRenderingContext2D;
-  drawingStrokes: Array<Content>; //JSON.parse(JSON.stringify(this.strokes)),  
+  drawingStrokes: Array<Content> = []; //JSON.parse(JSON.stringify(this.strokes)),  
   drawing: Drawing;
   lastX: number;
   lastY: number;
@@ -50,7 +50,7 @@ export class DrawingBoardComponent implements OnInit {
 
     this.ctx.clearRect(0, 0, 800, 800);
 
-    const drawingStrokes = this.drwaingBoardReadOnly ? this.existingDrawing.content : this.drawingStrokes;
+    const drawingStrokes = this.drwaingBoardReadOnly ? this.existingStrokes : this.drawingStrokes;
 
     drawingStrokes.forEach(draw => {
       this.ctx.beginPath();
@@ -98,7 +98,7 @@ export class DrawingBoardComponent implements OnInit {
     }
   }
 
-  onMouseEnter(event): void {}
+  // onMouseEnter(event): void {}
 
   onMouseUp(event): void {
     if (!this.drwaingBoardReadOnly) {
@@ -115,29 +115,29 @@ export class DrawingBoardComponent implements OnInit {
       }
 
       const newStrokes = this.drawingStrokes;
-
+      
       const ratio = this.getRatio();
 
-      // newStrokes.push({
-      //   coordinates: {
-      //     x: event.offsetX * ratio,
-      //     y: event.offsetY * ratio
-      //   },
-      //   color: this.currentColor,
-      //   width: this.currentWidth
-      // });
+      this.allowDrawing = true;
+
+      newStrokes.push({
+        width: this.currentWidth,    
+        color: this.currentColor,    
+        coordinates: [{
+          x: event.offsetX * ratio,
+          y: event.offsetY * ratio
+        }],
+      });
 
       // event.$emit(newStrokes);
-      if (event.offsetX !== undefined) {
-        this.lastX = event.offsetX * ratio;
-        this.lastY = event.offsetY * ratio;
-      }
+      // if (event.offsetX !== undefined) {
+      //   this.lastX = event.offsetX * ratio;
+      //   this.lastY = event.offsetY * ratio;
+      // }
       //  else {
       //   this.lastX = event.layerX - event.currentTarget.offsetLeft;
       //   this.lastY = event.layerY - event.currentTarget.offsetTop;
       // }
-
-      this.allowDrawing = true;
 
       // begins new line
       // this.ctx.beginPath();
@@ -154,19 +154,19 @@ export class DrawingBoardComponent implements OnInit {
 
       // const ratio = this.getRatio();
 
-      // newStrokes[newStrokes.length - 1].coordinates.push({
-      //   x: event.offsetX * ratio,
-      //   y: event.offsetY * ratio
-      // });
+      newStrokes[newStrokes.length - 1].coordinates.push({
+        x: event.offsetX * ratio,
+        y: event.offsetY * ratio
+      });
 
       // this.$emit("update:strokes", newStrokes);
-      // this.draw();
+      this.draw();
 
       // get current mouse position
-      if (event.offsetX !== undefined) {
-        this.currentY = event.offsetY * ratio;
-        this.currentX = event.offsetX * ratio;
-      }
+      // if (event.offsetX !== undefined) {
+      //   this.currentY = event.offsetY * ratio;
+      //   this.currentX = event.offsetX * ratio;
+      // }
       //  else {
       //   this.currentX = event.layerX - event.currentTarget.offsetLeft;
       //   this.currentY = event.layerY - event.currentTarget.offsetTop;

@@ -1,6 +1,13 @@
-<div class="drawing-thumb-board-container">
-  <drawing-board
-    [existingDrawing]="thumbnailCurrentDrawing"
-    [drwaingBoardReadOnly]="thumbReadOnly"
-  ></drawing-board>
+<div class="drawing-thumb" *ngIf="!thumbnailCurrentDrawing.private">
+  {{ thumbnailCurrentDrawing.name }}, by
+  {{ thumbnailCurrentDrawing.creator }} and my ID is
+  {{ thumbnailCurrentDrawing.id }}
+  <div class="drawing-thumb-board-container">
+    <a routerLink="/show/{{ thumbnailCurrentDrawing.id }}"
+      ><drawing-board
+        [existingStrokes]="thumbnailCurrentDrawing.content"
+        [drwaingBoardReadOnly]="true"
+      ></drawing-board>
+    </a>
+  </div>
 </div>
